@@ -19,7 +19,7 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <a href="./coffeepage.html" class="preview__btn">More</a>
+            <router-link to="/" class="preview__btn">More</router-link>
           </div>
         </div>
       </div>
@@ -59,9 +59,9 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <cart-item-component/>
-              <cart-item-component/>
-              <cart-item-component/>
+              <product-item/>
+              <product-item/>
+              <product-item/>
               <!-- <div class="best__item">
                 <img src="@/assets/img/coffee-1.jpg" alt="coffee" />
                 <div class="best__item-title">Solimo Coffee Beans 2kg</div>
@@ -88,10 +88,10 @@
 <script>
 
 import NavbarComponent from '@/components/NavbarComponent.vue'
-import CartItemComponent from '@/components/CartItemComponent.vue'
+import ProductItem from '@/components/ProductItem.vue'
 
 export default {
-  components: { NavbarComponent, CartItemComponent }
+  components: { NavbarComponent, ProductItem }
 };
 
 </script>
