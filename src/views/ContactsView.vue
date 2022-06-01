@@ -7,7 +7,7 @@
                         <navbar-component/>
                     </div>
                 </div>
-                <h1 class="title-big">Contact us</h1>
+                <page-title :text='text'/>
             </div>
         </div>
         <section class="contacts">
@@ -83,8 +83,14 @@
 <script>
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
+import PageTitle from '@/components/PageTitle.vue'
 
 export default {
-  components: { NavbarComponent, ProductItem },
+  components: { NavbarComponent, ProductItem, PageTitle },
+  data(){
+    return {
+        text: 'Contact us'
+      }
+  }
 };
 </script>

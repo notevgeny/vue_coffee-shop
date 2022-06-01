@@ -77,9 +77,24 @@
                 <div class="best__item-title">AROMISTICO Coffee 1kg</div>
                 <div class="best__item-price">6.99$</div>
               </div> -->
-              <product-item/>
-              <product-item/>
-              <product-item/>
+              <product-item
+                classItem="best__item" 
+                :title="best[0].title" 
+                :price="best[0].price"
+                :image="best[0].img"
+              />
+              <product-item
+                classItem="best__item"
+                :title="best[1].title" 
+                :price="best[1].price"
+                :image="best[1].img"
+              />
+              <product-item
+                classItem="best__item"
+                :title="best[2].title" 
+                :price="best[2].price"
+                :image="best[2].img"
+              />
             </div>
           </div>
         </div>
@@ -93,6 +108,7 @@
 import NavbarComponent from '@/components/NavbarComponent.vue'
 import ProductItem from '@/components/ProductItem.vue'
 
+
 export default {
   components: { NavbarComponent, ProductItem },
   data(){
@@ -101,20 +117,20 @@ export default {
         {
           id: 0,
           title: 'Solimo Coffee Beans 2kg',
-          price: '10.73',
-          image: 'coffee-1.jpg',
+          price: 10.73,
+          img: 'coffee-1.jpg',
         },
         {
           id: 1,
           title: 'Presto Coffee Beans 1kg',
-          price: '15.99',
-          image: 'coffee-2.jpg',
+          price: 15.99,
+          img: 'coffee-2.jpg',
         },
         {
           id: 2,
           title: 'AROMISTICO Coffee 1kg',
-          price: '6.99',
-          image: 'coffee-3.jpg',
+          price: 6.99,
+          img: 'coffee-3.jpg',
         }
       ]
     }

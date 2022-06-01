@@ -7,7 +7,7 @@
             <navbar-component/>
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <page-title :text='text'/>
       </div>
     </div>
     <section class="shop">
@@ -65,12 +65,42 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <product-item/>
-              <product-item/>
-              <product-item/>
-              <product-item/>
-              <product-item/>
-              <product-item/>
+              <product-item
+                classItem='shop__item'
+                  :title="coffee[0].title" 
+                  :price="coffee[0].price"
+                  :image="coffee[0].img"
+                />
+                <product-item
+                  classItem='shop__item'
+                  :title="coffee[1].title" 
+                  :price="coffee[1].price"
+                  :image="coffee[1].img"
+                />
+                <product-item
+                  classItem='shop__item'
+                  :title="coffee[2].title" 
+                  :price="coffee[2].price"
+                  :image="coffee[2].img"
+                />
+                <product-item
+                  classItem='shop__item'
+                  :title="coffee[3].title" 
+                  :price="coffee[3].price"
+                  :image="coffee[3].img"
+                />
+                <product-item
+                  classItem='shop__item'
+                  :title="coffee[4].title" 
+                  :price="coffee[4].price"
+                  :image="coffee[4].img"
+                />
+                <product-item
+                  classItem='shop__item'
+                  :title="coffee[5].title" 
+                  :price="coffee[5].price"
+                  :image="coffee[5].img"
+                />
             </div>
           </div>
         </div>
@@ -83,9 +113,10 @@
 
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
+import PageTitle from '@/components/PageTitle.vue'
 
 export default {
-  components: { NavbarComponent, ProductItem },
+  components: { NavbarComponent, ProductItem, PageTitle },
   data() {  
     return {
       coffee: [
@@ -93,39 +124,40 @@ export default {
           id: 0,
           img: "coffee-1.jpg",
           title: "Solimo Coffee Beans 2kg",
-          price: "10.73",
+          price: 10.73,
         },
         {
           id: 1,
           img: "coffee-2.jpg",
           title: "Solimo Beans 12kg",
-          price: "15.99",
+          price: 15.99,
         },
         {
           id: 2,
           img: "coffee-3.jpg",
           title: "Coffee Beans 6kg",
-          price: "6.99",
+          price: 6.99,
         },
         {
           id: 3,
           img: "coffee-1.jpg",
           title: "Solimo Coffee Beans 2kg",
-          price: "10.73",
+          price: 10.73,
         },
         {
           id: 4,
           img: "coffee-2.jpg",
           title: "Solimo Beans 12kg",
-          price: "15.99",
+          price: 15.99,
         },
         {
           id: 5,
           img: "coffee-3.jpg",
           title: "Coffee Beans 6kg",
-          price: "6.99",
+          price: 6.99,
         },
       ],
+      text: 'Our coffee'
     };
   },
 };
