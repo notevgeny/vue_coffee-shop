@@ -59,42 +59,16 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <!-- <product-item/>
-              <product-item/>
-              <product-item/> -->
-              <!-- <div class="best__item">
-                <img src="@/assets/img/coffee-1.jpg" alt="coffee" />
-                <div class="best__item-title">Solimo Coffee Beans 2kg</div>
-                <div class="best__item-price">10.73$</div>
-              </div>
-              <div class="best__item">
-                <img src="@/assets/img/coffee-2.jpg" alt="coffee" />
-                <div class="best__item-title">Presto Coffee Beans 1kg</div>
-                <div class="best__item-price">15.99$</div>
-              </div>
-              <div class="best__item">
-                <img src="@/assets/img/coffee-3.jpg" alt="coffee" />
-                <div class="best__item-title">AROMISTICO Coffee 1kg</div>
-                <div class="best__item-price">6.99$</div>
-              </div> -->
+
               <product-item
+                v-for="one in best"
+                :key="one.id"
                 classItem="best__item" 
-                :title="best[0].title" 
-                :price="best[0].price"
-                :image="best[0].img"
+                :title="one.title" 
+                :price="one.price"
+                :image="one.img"
               />
-              <product-item
-                classItem="best__item"
-                :title="best[1].title" 
-                :price="best[1].price"
-                :image="best[1].img"
-              />
-              <product-item
-                classItem="best__item"
-                :title="best[2].title" 
-                :price="best[2].price"
-                :image="best[2].img"
-              />
+
             </div>
           </div>
         </div>
@@ -107,6 +81,7 @@
 
 import NavbarComponent from '@/components/NavbarComponent.vue'
 import ProductItem from '@/components/ProductItem.vue'
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default {
@@ -115,19 +90,19 @@ export default {
     return {
       best: [
         {
-          id: 0,
+          id: uuidv4(),
           title: 'Solimo Coffee Beans 2kg',
           price: 10.73,
           img: 'coffee-1.jpg',
         },
         {
-          id: 1,
+          id: uuidv4(),
           title: 'Presto Coffee Beans 1kg',
           price: 15.99,
           img: 'coffee-2.jpg',
         },
         {
-          id: 2,
+          id: uuidv4(),
           title: 'AROMISTICO Coffee 1kg',
           price: 6.99,
           img: 'coffee-3.jpg',

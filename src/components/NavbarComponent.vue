@@ -8,27 +8,22 @@
         flex-wrap
       "
     >
-      <li class="header__item">
-        <router-link :to="links[0].link"
-          ><img
-            :src="require(`@/assets/logo/${links[0].icon}`)"
-            :alt="links[0].icon"
-        /></router-link>
-      </li>
       <universal-nav
+        :link="links.header.link"
         classItem="header__item"
-        :link="links[1].link"
-        :text="links[1].text"
-      />
+      >
+        <img
+            :src="require(`@/assets/logo/${links.header.icon}`)"
+            :alt="links.header.icon"
+        />
+      </universal-nav>
+
       <universal-nav
+        v-for="link in links.other"
+        :key="link.id"
         classItem="header__item"
-        :link="links[2].link"
-        :text="links[2].text"
-      />
-      <universal-nav
-        classItem="header__item"
-        :link="links[3].link"
-        :text="links[3].text"
+        :link="link.link"
+        :text="link.text"
       />
     </ul>
   </header>
@@ -41,12 +36,13 @@ export default {
   components: { UniversalNav },
   data() {
     return {
-      links: [
-        {
+      links: {
+        header: {
           id: 0,
           link: "/",
           icon: "Logo.svg",
         },
+        other: [
         {
           id: 1,
           text: "Our coffee",
@@ -63,6 +59,7 @@ export default {
           link: "/contacts",
         },
       ],
+      }
     };
   },
 };

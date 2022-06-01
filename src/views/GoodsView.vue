@@ -49,42 +49,16 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <div class="shop__wrapper">
+
                 <product-item
+                  v-for="good in goods"
+                  :key="good.id"
                   classItem="shop__item"
-                  :title="goods[0].title" 
-                  :price="goods[0].price"
-                  :image="goods[0].img"
+                  :title="good.title" 
+                  :price="good.price"
+                  :image="good.img"
                 />
-                <product-item
-                  classItem="shop__item"
-                  :title="goods[1].title" 
-                  :price="goods[1].price"
-                  :image="goods[1].img"
-                />
-                <product-item
-                  classItem="shop__item"
-                  :title="goods[2].title" 
-                  :price="goods[2].price"
-                  :image="goods[2].img"
-                />
-                <product-item
-                  classItem="shop__item"
-                  :title="goods[3].title" 
-                  :price="goods[3].price"
-                  :image="goods[3].img"
-                />
-                <product-item
-                  classItem="shop__item"
-                  :title="goods[4].title" 
-                  :price="goods[4].price"
-                  :image="goods[4].img"
-                />
-                <product-item
-                  classItem="shop__item"
-                  :title="goods[5].title" 
-                  :price="goods[5].price"
-                  :image="goods[5].img"
-                />
+
               </div>
             </div>
           </div>
@@ -99,6 +73,7 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
 import PageTitle from '@/components/PageTitle.vue'
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   components: { NavbarComponent, ProductItem, PageTitle },
@@ -106,37 +81,37 @@ export default {
     return {
       goods: [
         {
-          id: 0,
+          id: uuidv4(),
           img: "coffee-1.jpg",
           title: "Solimo Coffee Beans 2kg",
           price: 10.73,
         },
         {
-          id: 1,
+          id: uuidv4(),
           img: "coffee-2.jpg",
           title: "Solimo Beans 12kg",
           price: 15.99,
         },
         {
-          id: 2,
+          id: uuidv4(),
           img: "coffee-3.jpg",
           title: "Coffee Beans 6kg",
           price: 6.99,
         },
         {
-          id: 3,
+          id: uuidv4(),
           img: "coffee-1.jpg",
           title: "Solimo Coffee Beans 2kg",
           price: 10.73,
         },
         {
-          id: 4,
+          id: uuidv4(),
           img: "coffee-2.jpg",
           title: "Solimo Beans 12kg",
           price: 15.99,
         },
         {
-          id: 5,
+          id: uuidv4(),
           img: "coffee-3.jpg",
           title: "Coffee Beans 6kg",
           price: 6.99,
