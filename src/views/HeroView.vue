@@ -19,12 +19,19 @@
               We makes every day full of energy and taste
             </div>
             <div class="preview__subtitle">Want to try our beans?</div>
-            <router-link to="/" class="preview__btn">More</router-link>
+
+            <a
+              href="/our-coffee"
+              class="preview__btn"
+              @click.prevent="smoothScroll"
+            >
+              More
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <section class="about">
+    <section class="about" id="about" ref="about">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
@@ -55,20 +62,18 @@
     </section>
     <section class="best">
       <div class="container">
-        <div class="title">Our best</div>
+        <div class="title" ref="ourBest">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-
               <product-item
                 v-for="one in best"
                 :key="one.id"
-                classItem="best__item" 
-                :title="one.title" 
+                classItem="best__item"
+                :title="one.title"
                 :price="one.price"
                 :image="one.img"
               />
-
             </div>
           </div>
         </div>
@@ -78,38 +83,45 @@
 </template>
 
 <script>
-
-import NavbarComponent from '@/components/NavbarComponent.vue'
-import ProductItem from '@/components/ProductItem.vue'
-import { v4 as uuidv4 } from 'uuid';
-
+import NavbarComponent from "@/components/NavbarComponent.vue";
+import ProductItem from "@/components/ProductItem.vue";
+import { v4 as uuidv4 } from "uuid";
+import { scrollIntoView } from "seamless-scroll-polyfill";
 
 export default {
   components: { NavbarComponent, ProductItem },
-  data(){
+
+  data() {
     return {
       best: [
         {
           id: uuidv4(),
-          title: 'Solimo Coffee Beans 2kg',
+          title: "Solimo Coffee Beans 2kg",
           price: 10.73,
-          img: 'coffee-1.jpg',
+          img: "coffee-1.jpg",
         },
         {
           id: uuidv4(),
-          title: 'Presto Coffee Beans 1kg',
+          title: "Presto Coffee Beans 1kg",
           price: 15.99,
-          img: 'coffee-2.jpg',
+          img: "coffee-2.jpg",
         },
         {
           id: uuidv4(),
-          title: 'AROMISTICO Coffee 1kg',
+          title: "AROMISTICO Coffee 1kg",
           price: 6.99,
-          img: 'coffee-3.jpg',
-        }
-      ]
-    }
-  }
+          img: "coffee-3.jpg",
+        },
+      ],
+    };
+  },
+  methods: {
+    smoothScroll() {
+      scrollIntoView(this.$refs.ourBest, {
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+  },
 };
-
 </script>
