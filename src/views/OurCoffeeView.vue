@@ -7,7 +7,7 @@
             <navbar-component/>
           </div>
         </div>
-        <page-title :text='text'/>
+        <page-title :text='coffee.text'/>
       </div>
     </div>
     <section class="shop">
@@ -67,7 +67,7 @@
             <div class="shop__wrapper">
 
               <product-item
-                v-for="one in coffee"
+                v-for="one in coffee.coffee"
                 :key="one.id"
                 classItem='shop__item'
                 :title="one.title" 
@@ -88,52 +88,13 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
 import PageTitle from '@/components/PageTitle.vue'
-import { v4 as uuidv4 } from 'uuid';
 
 export default {
   components: { NavbarComponent, ProductItem, PageTitle },
-  data() {  
-    return {
-      coffee: [
-        {
-          id: uuidv4(),
-          img: "coffee-1.jpg",
-          title: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-        },
-        {
-          id: uuidv4(),
-          img: "coffee-2.jpg",
-          title: "Solimo Beans 12kg",
-          price: 15.99,
-        },
-        {
-          id: uuidv4(),
-          img: "coffee-3.jpg",
-          title: "Coffee Beans 6kg",
-          price: 6.99,
-        },
-        {
-          id: uuidv4(),
-          img: "coffee-1.jpg",
-          title: "Solimo Coffee Beans 2kg",
-          price: 10.73,
-        },
-        {
-          id: uuidv4(),
-          img: "coffee-2.jpg",
-          title: "Solimo Beans 12kg",
-          price: 15.99,
-        },
-        {
-          id: uuidv4(),
-          img: "coffee-3.jpg",
-          title: "Coffee Beans 6kg",
-          price: 6.99,
-        },
-      ],
-      text: 'Our coffee'
-    };
-  },
+  computed: {
+    coffee(){
+      return this.$store.getters["getCoffee"]
+    }
+  }
 };
 </script>
