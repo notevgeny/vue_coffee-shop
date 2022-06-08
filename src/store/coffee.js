@@ -1,41 +1,40 @@
-import { v4 as uuidv4 } from 'uuid';
 
 const coffee = {
   state: {
     coffee: [
       {
-        id: uuidv4(),
-        img: "coffee-1.jpg",
+        id: 0,
+        image: "coffee-1.jpg",
         title: "Solimo Coffee Beans 2kg",
         price: 10.73,
       },
       {
-        id: uuidv4(),
-        img: "coffee-2.jpg",
+        id: 1,
+        image: "coffee-2.jpg",
         title: "Solimo Beans 12kg",
         price: 15.99,
       },
       {
-        id: uuidv4(),
-        img: "coffee-3.jpg",
+        id: 2,
+        image: "coffee-3.jpg",
         title: "Coffee Beans 6kg",
         price: 6.99,
       },
       {
-        id: uuidv4(),
-        img: "coffee-1.jpg",
+        id: 3,
+        image: "coffee-1.jpg",
         title: "Solimo Coffee Beans 2kg",
         price: 10.73,
       },
       {
-        id: uuidv4(),
-        img: "coffee-2.jpg",
+        id: 4,
+        image: "coffee-2.jpg",
         title: "Solimo Beans 12kg",
         price: 15.99,
       },
       {
-        id: uuidv4(),
-        img: "coffee-3.jpg",
+        id: 5,
+        image: 'coffee-3.jpg',
         title: "Coffee Beans 6kg",
         price: 6.99,
       },
@@ -45,6 +44,11 @@ const coffee = {
   getters: {
     getCoffee(state){
       return { coffee: state.coffee, text: state.text }
+    },
+    getCoffeeById(state){
+      return (id) => { 
+        return state.coffee.find((card) => card.id === +id)
+      }
     }
   }
 }

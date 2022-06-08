@@ -51,12 +51,11 @@
               <div class="shop__wrapper">
 
                 <product-item
-                  v-for="good in goods.goods"
-                  :key="good.id"
+                  v-for="card in goods.goods"
+                  :key="card.id"
                   classItem="shop__item"
-                  :title="good.title" 
-                  :price="good.price"
-                  :image="good.img"
+                  :card="card"
+                  @onNavigate="navigate"
                 />
 
               </div>
@@ -74,12 +73,20 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
 import PageTitle from '@/components/PageTitle.vue'
 
+import { navigate } from '../mixins/navigate'
+
 export default {
   components: { NavbarComponent, ProductItem, PageTitle },
   computed: {
     goods(){
       return this.$store.getters["getGoods"]
     }
-  }
+  },
+  data() {
+    return {
+      name: 'goods'
+    }
+  },
+  mixins: [navigate]
 };
 </script>

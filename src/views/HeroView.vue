@@ -67,12 +67,10 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
               <product-item
-                v-for="one in bestsellers"
-                :key="one.id"
+                v-for="card in bestsellers"
+                :key="card.id"
                 classItem="best__item"
-                :title="one.title"
-                :price="one.price"
-                :image="one.img"
+                :card="card"
               />
             </div>
           </div>
