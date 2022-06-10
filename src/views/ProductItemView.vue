@@ -53,9 +53,6 @@ export default {
       pageName(){
           return this.$route.name
       },
-      currency(value){
-          return value + '$'
-      },
       card(){
           const pageGetter = this.pageName === 'coffee' ? 'getCoffeeById' : 'getGoodsById'
           return this.$store.getters[pageGetter](this.$route.params.id)
