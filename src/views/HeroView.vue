@@ -65,14 +65,19 @@
         <div class="title" ref="ourBest">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="best__wrapper">
-              <product-item
+            <spinner-component v-if="isLoading"></spinner-component>
+            <div class="best__wrapper" v-else>
+
+              <product-item 
                 v-for="card in bestsellers"
                 :key="card.id"
                 classItem="best__item"
                 :card="card"
               />
+              
+              
             </div>
+            
           </div>
         </div>
       </div>
@@ -84,14 +89,20 @@
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import ProductItem from "@/components/ProductItem.vue";
 import { scrollIntoView } from "seamless-scroll-polyfill";
+import SpinnerComponent from '@/components/SpinnerComponent.vue'
+import {spinner} from '../mixins/spinner'
 
 export default {
-  components: { NavbarComponent, ProductItem },
+  components: { NavbarComponent, ProductItem, SpinnerComponent },
+  
   computed: {
     bestsellers(){
       return this.$store.getters["getBestsellers"]
-    }
+    },
+    
   },
+  mixins: [spinner],
+  
   methods: {
     smoothScroll() {
       scrollIntoView(this.$refs.ourBest, {
@@ -100,5 +111,20 @@ export default {
       });
     },
   },
+  // beforeMount(){
+  //   this.$store.dispatch("setIsLoading", true)
+
+  //   setTimeout(() => {
+  //     this.$store.dispatch("setIsLoading", false)
+  //   }, 1500)
+
+  // },
+  mounted(){
+    fetch('http://localhost:3000/bestsellers')
+    .then(response => response.json())
+    .then(data => {
+      this.$store.dispatch("setPopularData", data)
+    })
+  }
 };
 </script>
