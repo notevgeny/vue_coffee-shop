@@ -1,65 +1,52 @@
 
 const coffee = {
   state: {
-    coffee: [
-      // {
-      //   id: 0,
-      //   image: "coffee-1.jpg",
-      //   title: "Solimo Coffee Beans 2kg",
-      //   price: 10.73,
-      // },
-      // {
-      //   id: 1,
-      //   image: "coffee-2.jpg",
-      //   title: "Solimo Beans 12kg",
-      //   price: 15.99,
-      // },
-      // {
-      //   id: 2,
-      //   image: "coffee-3.jpg",
-      //   title: "Coffee Beans 6kg",
-      //   price: 6.99,
-      // },
-      // {
-      //   id: 3,
-      //   image: "coffee-1.jpg",
-      //   title: "Solimo Coffee Beans 2kg",
-      //   price: 10.73,
-      // },
-      // {
-      //   id: 4,
-      //   image: "coffee-2.jpg",
-      //   title: "Solimo Beans 12kg",
-      //   price: 15.99,
-      // },
-      // {
-      //   id: 5,
-      //   image: 'coffee-3.jpg',
-      //   title: "Coffee Beans 6kg",
-      //   price: 6.99,
-      // },
-    ],
+    coffee: [],
+    searchValue: '',
+    sortValue: '',
     text: 'Our coffee'
   },
   mutations: {
     setCoffeeData(state, data){
       state.coffee = data
+    },
+    setSearchValue(state, value){
+      state.searchValue = value
+    },
+    setSortValue(state, value){
+      state.sortValue = value
     }
   },
   actions: {
     setCoffeeData({commit}, data){
       commit("setCoffeeData", data)
+    },
+    setSearchValue({commit}, value){
+      commit("setSearchValue", value)
+    },
+    setSortValue({commit}, value){
+      commit("setSortValue", value)
     }
   },
   getters: {
     getCoffee(state){
-      return { coffee: state.coffee, text: state.text }
+      return { 
+        coffee: state.coffee
+          // .filter(item => item.name.toLowerCase()
+          // .includes(state.searchValue.toLowerCase()))
+          // .filter(item => item.country.toLowerCase()
+          // .includes(state.sortValue.toLowerCase()))
+          , 
+        text: state.text }
     },
     getCoffeeById(state){
       return (id) => { 
         return state.coffee.find((card) => card.id === +id)
       }
-    }
+    },
+    getSearchValue(state){
+      return state.searchValue
+    },
   }
 }
 

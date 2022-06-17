@@ -4,7 +4,7 @@
       :src="card.image"
       :alt="card.image" 
     />
-    <div class="best__item-title">{{card.title}}</div>
+    <div class="best__item-title">{{card.name}}</div>
     <div class="best__item-price">{{ card.price}}</div>
   </div>
 </template>
